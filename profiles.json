@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "name": "Amalia Asri",
+        "course": "Faculty of Information Management",
+        "email": "amaliasri@gmail.com",
+        "phone": "60123456789",
+        "image_path": "img/1.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Najwa Sulaiman",
+        "course": "Faculty of Information Management",
+        "email": "najwasulaiman@gmail.com",
+        "phone": "987-654-3210",
+        "image_path": "img/2.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Hanis Afiqah",
+        "course": "Faculty of Information Management",
+        "email": "hanisafiqah@gmail.com",
+        "phone": "555-555-5555",
+        "image_path": "img/3.jpg"
+    },
+	{
+        "id": 4,
+        "name": "Haziq",
+        "course": "Faculty of Information Management",
+        "email": "haziqq@gmail.com",
+        "phone": "555-555-5555",
+        "image_path": "img/4.jpg"
+    },
+	{
+        "id": 5,
+        "name": "Allya Marissa",
+        "course": "Faculty of Information Management",
+        "email": "allyamarissa@gmail.com",
+        "phone": "555-555-5555",
+        "image_path": "img/5.jpg"
+    },
+	{
+        "id": 6,
+        "name": "Faris Izz",
+        "course": "Faculty of Information Management",
+        "email": "izzwatashi@gmail.com",
+        "phone": "555-555-5555",
+        "image_path": "img/6.jpg"
+    }
+]

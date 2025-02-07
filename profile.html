@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Student E-Profile</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="profiles.html">Student E-Profile</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="profiles.html">Profiles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Profile Content -->
+    <div class="container mt-5">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h3 id="profile-name">Loading...</h3>
+            </div>
+            <div class="card-body">
+                <img id="profile-image" 
+                     src="" 
+                     width="128" 
+                     height="128" 
+                     class="rounded-circle mb-3" 
+                     alt="Profile picture">
+                <p><strong>Course :</strong> <span id="profile-course">Loading...</span></p>
+                <p><strong>Email :</strong> <span id="profile-email">Loading...</span></p>
+                <p><strong>Phone :</strong> <span id="profile-phone">Loading...</span></p>
+                <a href="profiles.html" class="btn btn-secondary">Back to Profiles</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3 mt-auto">
+        <div class="container">
+            <p>&copy; 2023 Student E-Profile. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Get the profile ID from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const profileId = parseInt(urlParams.get('id'));
+
+        // Validate profile ID
+        if (isNaN(profileId)) {
+            alert('Invalid profile ID.');
+            window.location.href = 'profiles.html';
+        }
+
+        // Fetch profiles from profiles.json
+        fetch('profiles.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(profiles => {
+                console.log('Profiles loaded:', profiles); // Debugging: Log fetched data
+
+                // Find the profile with the matching ID
+                const profile = profiles.find(p => p.id === profileId);
+
+                if (profile) {
+                    // Display the profile data
+                    document.getElementById('profile-name').textContent = profile.name;
+                    document.getElementById('profile-image').src = profile.image_path;
+                    document.getElementById('profile-image').alt = `${profile.name}'s profile picture`;
+                    document.getElementById('profile-course').textContent = profile.course;
+                    document.getElementById('profile-email').textContent = profile.email;
+                    document.getElementById('profile-phone').textContent = profile.phone;
+                } else {
+                    // Redirect to profiles.html if the profile is not found
+                    alert('Profile not found.');
+                    window.location.href = 'profiles.html';
+                }
+            })
+            .catch(error => {
+                console.error('Error loading profile:', error);
+                alert('An error occurred while loading the profile. Check the console for details.');
+            });
+    </script>
+</body>
+</html>
